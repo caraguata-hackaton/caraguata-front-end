@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# SIMEC - Sistema de Monitoramento Escolar de Caraguatatuba
 
-## Getting Started
+O **SIMEC** é uma plataforma dedicada à gestão centralizada de chamados técnicos e inventário escolar. O sistema otimiza o fluxo de comunicação entre as unidades escolares e a equipe da SEDUC, permitindo o registro, o acompanhamento de demandas e o controle de infraestrutura.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+##  Funcionalidades Principais
+* **Gestão de Chamados:** Abertura, priorização e acompanhamento de chamados técnicos.
+* **Inventário Escolar:** Consulta e gestão de infraestrutura (cômodos e equipamentos).
+* **Painel de Controle:** Dashboards intuitivos para gestores escolares e administradores SEDUC.
+* **Exportação de Relatórios:** Geração de dados em formato CSV para planejamento estratégico.
+
+## Tecnologias e Justificativa
+* **JavaScript:** Linguagem base de todo o projeto, permitindo a unificação da lógica.
+* **React:** Utilizado para criar interfaces dinâmicas, rápidas e baseadas em componentes.
+* **Next.js:** Framework otimizado para performance e estrutura eficiente de rotas.
+* **Tailwind CSS:** Ferramenta de estilização para um design consistente.
+* **Express:** Framework minimalista e flexível para a construção da API.
+* **Prisma:** ORM para manipulação segura e tipada do banco de dados MySQL.
+
+---
+
+## Configuração de Ambiente
+
+### 1. Pré-requisitos
+* [Node.js](https://nodejs.org/) (versão LTS)
+* [Git](https://git-scm.com/)
+* [MySQL Server](https://dev.mysql.com/downloads/installer/) (instalado e em execução)
+
+### 2. Configuração do Banco de Dados
+Abra sua ferramenta de gerenciamento do MySQL (Workbench/HeidiSQL) e execute:
+```sql
+CREATE DATABASE SIMEC;
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ou crie da forma que preferir a database com o nome SIMEC.
+### 3. Variáveis de Ambiente
+Crie um arquivo .env na pasta raiz do projeto do backend com configurações parecidas com estas:
+```env
+DATABASE_HOST=localhost
+DATABASE_PORT=3306
+DATABASE_USER=root
+DATABASE_PASSWORD=aluno
+DATABASE_NAME=SIMEC
+DATABASE_URL=mysql://root:aluno@localhost:3306/SIMEC
+PORT=3333
+JWT_SECRET=2Lti8utkOLTHBRMGlfrMECFbqaEBGsjFYUEKiUxVsyHhuFnK0Sp61ghXZQvw5dnAiFTVU-q0RLbE7xVG-Xfwtg
+```
+Estas configurações acima são para o ambiente do IFSP por exemplo que é configurado desta forma.
 
-You can start editing the page by modifying `app/not-found.js`. The page auto-updates as you edit the file.
+Crie um arquivo .env na pasta /frontend:
+```env
+API_URL=http://localhost:3333
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧪 Instruções de Execução
+1. **Backend:**
+* Acesse a pasta do projeto do backend.
+* Rode: npm install.
+* Rode as migrações: `npx prisma migrate dev`
+* Rode as migrações: `npx prisma generate`
+* Crie os usuários de teste, rode este comando: `npx prisma db seed`
+* Inicie: `npm run dev`.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. **Frontend:**
+* Entre no projeto do frontend.
+* Instale: npm install.
+* Inicie: npm run dev.
+## 🔑 Credenciais de Acesso (Teste)
+| Perfil            | Matrícula (Login) | Senha  |
+|-------------------|-------------------|--------|
+| **Gestor Escola** | 12345             | 123456 |
+| **Gestor Seduc**  | 54321             | 123456 |
