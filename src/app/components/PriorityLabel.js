@@ -1,15 +1,19 @@
 const priorityStyles = {
-    high: {style: "bg-vermelho-claro text-vermelho", text: "ALTA"},
-    medium: {style: "bg-amarelo-claro text-laranja", text: "MÉDIA"},
-    low: {style:"bg-azul-bebezinho text-azul-escuro", text: "BAIXA"},
+    baixa: "bg-green-100 text-green-700 border-green-300",
+    media: "bg-yellow-100 text-yellow-700 border-yellow-300",
+    alta: "bg-red-100 text-red-700 border-red-300",
 }
 
-export function PriorityLabel({ priority}) {
-    const priorityObject = priorityStyles[priority] || priorityStyles.low
+const priorityLabels = {
+    baixa: "BAIXA",
+    media: "MÉDIA",
+    alta: "ALTA",
+}
 
+export function PriorityLabel({ priority }) {
     return (
-        <div className={`rounded-lg px-1 py-1 ${priorityObject.style} items-center text-sm justify-center flex font-bold`}>
-            {priorityObject.text}
+        <div className={`rounded-lg px-2 py-2 ${priorityStyles[priority]} items-center text-sm justify-center flex font-bold`}>
+            {priorityLabels[priority]}
         </div>
     )
 }

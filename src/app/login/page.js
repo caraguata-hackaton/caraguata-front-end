@@ -3,10 +3,27 @@ import { useState } from 'react';
 import Link from 'next/link'
 import Image from 'next/image'
 import Logo from '../../../public/logo.png'
+import {loginRequest} from "@/services/authService";
+import {getHomePathByRole} from "@/lib/getHomePathByRole";
 
 export default function Login() {
   const [mostrarSenha, setMostrarSenha] = useState(false);
   const [senha, setSenha] = useState('');
+  const [registration, setRegistration] = useState("")
+
+  async function handleSubmit(event) {
+    event.preventDefault()
+
+    try {
+      const data = await loginRequest(registration, senha)
+
+      const destination = getHomePathByRole(data.user.role)
+
+      window.location.href = destination
+    } catch (error) {
+      alert(error.message)
+    }
+  }
 
   return (
     <section className="flex min-h-screen items-center justify-center bg-gelo p-4">
@@ -17,16 +34,17 @@ export default function Login() {
           <h2 className="text-azul-escuro text-3xl font-bold">Acesse sua conta!</h2>
         </div>
 
-        <form className="flex flex-col gap-5">
+        <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
           <div className="flex flex-col gap-1.5">
             <label htmlFor="usuario" className="text-azul-escuro font-semibold text-lg">
-              Usuário
+              Matrícula
             </label>
             <input
               type="text"
               id="usuario"
-              placeholder="Digite seu usuário..."
+              placeholder="Digite sua matrícula..."
               className="w-full px-4 py-3 bg-gelo rounded-xl border border-azul-escuro outline-none text-lg"
+              onChange={(e) => setRegistration(e.target.value)}
             />
           </div>
 
@@ -80,7 +98,7 @@ export default function Login() {
 
           <button
             type="submit"
-            className="w-40 h-10 mx-auto bg-azul-escuro text-gelo hover:text-azul-escuro hover:bg-gelo hover:border hover:border-azul-escuro font-bold rounded-lg transition-colors text-lg uppercase cursor-pointer"
+            className="text-gelo w-40 h-10 mx-auto bg-azul-escuro hover:text-azul-escuro hover:bg-gelo hover:border hover:border-azul-escuro font-bold rounded-lg transition-colors text-lg uppercase cursor-pointer"
           >
             Entrar
           </button>
