@@ -82,7 +82,7 @@ export default function Cadastro() {
                 />
               </div>
 
-              {/* Matrícula */}
+        
               <div className="flex flex-col">
                 <label htmlFor="matricula" className="text-sm font-bold text-azul-escuro mb-1.5">
                   Matrícula
