@@ -8,7 +8,7 @@ export function PriorityLabel({ priority}) {
     const priorityObject = priorityStyles[priority] || priorityStyles.low
 
     return (
-        <div className={`rounded-lg px-2 py-1 ${priorityObject.style} items-center justify-center flex font-bold`}>
+        <div className={`rounded-lg px-1 py-1 ${priorityObject.style} items-center text-sm justify-center flex font-bold`}>
             {priorityObject.text}
         </div>
     )

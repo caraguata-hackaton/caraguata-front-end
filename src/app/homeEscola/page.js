@@ -22,7 +22,7 @@ export default function ManagementPage() {
                         <header className="flex my-16 justify-between">
                             <h1 className="font-semibold text-4xl">Olá! EMEF Carlos Altero Ortega</h1>
 
-                            <Link href="/" className="flex items-center gap-3 bg-azul-escuro px-10 py-4 rounded-lg hover:bg-azul-claro transition">
+                            <Link href="/novoChamado" className="flex items-center gap-3 bg-azul-escuro px-10 py-4 rounded-lg hover:bg-azul-claro transition">
                                 <FiPlus size={30} className="text-white"/>
 
                                 <p className="font-bold text-white text-lg">Novo chamado</p>
