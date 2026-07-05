@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
-:root {
-  --background: #E6EEF5;
-  --foreground: #171717;
+@theme {
+  --color-background: #E6EEF5;
+  --color-foreground: #171717;
   --color-azul-escuro: #224870;
   --color-azul-claro: #2a638f;
   --color-vermelho: #a30000;
